@@ -1,0 +1,8 @@
+{
+    "signInRedirectURL": "http://localhost:3000",
+    "signOutRedirectURL": "http://localhost:3000",
+    "clientID": "MyM2QIdLieq5TRmgHjbE2sn8gAIa",
+    "baseUrl": "https://api.asgardeo.io/t/adeesha",
+    "scope": [ "openid","profile" ]
+}
+
