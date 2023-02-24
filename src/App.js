@@ -18,7 +18,7 @@ import { default as authConfig } from "./authConfig.json";
 
 // Component to render the login/signup/logout menu
 const RightLoginSignupMenu = () => {
-  let { state, signIn, signOut, getAccessToken } = useAuthContext();
+  let { state, signIn, signOut, getAccessToken, getIDToken } = useAuthContext();
 
   // Based on Asgardeo SDK, set a variable like below to check and conditionally render the menu
   let isLoggedIn = state.isAuthenticated;
@@ -35,9 +35,11 @@ const RightLoginSignupMenu = () => {
 
     (async () => {
       const accessToken = await getAccessToken();
-      console.log(accessToken);
+      const idToken = await getIDToken();
+      console.log(`Access Token: ${accessToken}`);
+      console.log(`Id Token: ${idToken}`);
 
-      const response = await fetch("https://938b79aa-9e72-4948-90f5-9a88e9cdfaf0-dev.e1-us-east-azure.choreoapis.dev/iwfo/myfirstapi/1.0.0/greeting?name=asdf", {
+      const response = await fetch("https://938b79aa-9e72-4948-90f5-9a88e9cdfaf0-dev.e1-us-east-azure.choreoapis.dev/iwfo/myfirstapi/1.0.0/items", {
         headers: {
           Accept: "text/plain",
           "Authorization": `Bearer ${accessToken}`,
@@ -49,7 +51,7 @@ const RightLoginSignupMenu = () => {
 
 
 
-  }, [state.isAuthenticated, getAccessToken]);
+  }, [state.isAuthenticated, getAccessToken, getIDToken]);
 
   // Conditionally render the following two links based on whether the user is logged in or not
   if (isLoggedIn) {
@@ -98,9 +100,7 @@ const App = () => {
   }, []);
   return (
     <>
-      <AuthProvider
-        config={authConfig}
-      >
+      <AuthProvider config={authConfig}>
         <BrowserRouter>
           <PetStoreNav />
           <Switch>

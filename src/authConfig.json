@@ -3,6 +3,11 @@
     "signOutRedirectURL": "http://localhost:3000",
     "clientID": "i89DDwmnTaqXaiXrmp7mk2Y7kw0a",
     "baseUrl": "https://api.asgardeo.io/t/thilinaba",
-    "scope": [ "openid","profile" ]
+    "scope": [
+        "openid",
+        "profile",
+        "urn:thilinaba:myfirstapi:petstore_item_read",
+        "urn:thilinaba:myfirstapi:petstore_item_create",
+        "urn:thilinaba:myfirstapi:petstore_item_update"
+    ]
 }
-
